@@ -13,3 +13,11 @@ image::https://img.shields.io/badge/code%20style-gofmt-brightgreen.svg[alt="gofm
 	RFC 2119.
 
 Synchronize a local directory in Maven default layout against a Nexus instance.
+
+== Installation
+
+----
+% go get github/jhinrichsen/maven-pom
+----
+
+The result is a standalone statically linked executable for your platform.
