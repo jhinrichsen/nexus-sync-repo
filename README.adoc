@@ -1,2 +1,16 @@
 = nexus-sync-repo
 Synchronize a local directory in Maven default layout against a Nexus instance
+= maven-pom
+Jochen Hinrichsen, jochen.hinrichsen@kambrium.netv1.0.0, 2013-07-04
+:numbered:
+:toc: left
+
+image::https://img.shields.io/travis/jhinrichsen/nexus-sync-repo.svg[alt="Travis build status", link="https://travis-ci.org/jhinrichsen/nexus-sync-repo "]
+image::https://goreportcard.com/badge/github.com/jhinrichsen/nexus-sync-repo [alt="Go Report Card", link="https://goreportcard.com/report/github.com/jhinrichsen/nexus-sync-repo"]
+image::https://img.shields.io/badge/code%20style-gofmt-brightgreen.svg[alt="gofmt", link="https://golang.org/cmd/gofmt/"]image::https://img.shields.io/badge/editor-vim-brightgreen.svg[alt="vim", link="http://www.vim.org"]
+
+	The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
+	NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and
+	"OPTIONAL" in this document are to be interpreted as described in
+	RFC 2119.
+
