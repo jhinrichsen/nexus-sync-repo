@@ -116,7 +116,7 @@ func main() {
 		a.NexusStatusCode = res.StatusCode
 
 		// PUT
-		if *upload {
+		if a.NexusStatusCode == http.StatusNotFound && *upload {
 			file, err := os.Open(filepath.Join(a.Path, a.Filename))
 			if err != nil {
 				log.Fatal(err)
