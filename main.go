@@ -12,6 +12,7 @@ import (
 )
 
 const (
+	// SLASH is the forward slas
 	SLASH = "/"
 )
 
@@ -26,12 +27,15 @@ var (
 		"Upload non-existing artifacts")
 )
 
+// Gav holds Maven group, artifact, version (plus packaging aka extension and
+// classifier)
 type Gav struct {
-	GroupId, ArtifactId, Version, Packaging string
+	GroupID, ArtifactID, Version, Packaging string
 	// Optional
 	Classifier string
 }
 
+// Artifact holds on item in the local repository to sync against Nexus
 type Artifact struct {
 	Path            string
 	Filename        string
@@ -169,8 +173,8 @@ func DefaultLayout(path string) Gav {
 	}
 
 	gav := Gav{
-		GroupId:    group,
-		ArtifactId: artifact,
+		GroupID:    group,
+		ArtifactID: artifact,
 		Version:    version,
 		Classifier: classifier,
 		Packaging:  packaging[1:], // strip '.'
@@ -179,11 +183,11 @@ func DefaultLayout(path string) Gav {
 	return gav
 }
 
-// Return a maven default layout for a given Gav
+// DefaultLayout returns a maven default layout for a given Gav
 // The maven spec looks like /com/company/prod/a1/0.0.0.0/a1-0.0.0.0.jar
 func (g Gav) DefaultLayout() string {
-	group := strings.Replace(g.GroupId, ".", SLASH, -1) // <0 means ALL
-	completeArtifact := g.ArtifactId + "-" + g.Version
+	group := strings.Replace(g.GroupID, ".", SLASH, -1) // <0 means ALL
+	completeArtifact := g.ArtifactID + "-" + g.Version
 	// Optionally add classifier
 	if len(g.Classifier) > 0 {
 		completeArtifact = completeArtifact + "-" + g.Classifier
@@ -191,7 +195,7 @@ func (g Gav) DefaultLayout() string {
 	return strings.Join([]string{
 		"", // force leading slash
 		group,
-		g.ArtifactId,
+		g.ArtifactID,
 		g.Version,
 		completeArtifact + "." + g.Packaging}, SLASH)
 }
