@@ -17,7 +17,11 @@ Synchronize a local directory in Maven default layout against a Nexus instance.
 == Installation
 
 ----
-% go get github/jhinrichsen/maven-pom
+% go get github/jhinrichsen/nexus-sync-repo
 ----
 
 The result is a standalone statically linked executable for your platform.
+
+== Changelog
+
+v1.1.0 Ignore . files (Nexus cache, trash, index, Maven up-to-date info, ...)

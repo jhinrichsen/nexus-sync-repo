@@ -147,6 +147,14 @@ func main() {
 }
 
 func consider(filename string) bool {
+	// Ignore hidden items such as Nexus cache, trash, ...
+	if strings.HasPrefix(filename, ".") {
+		return false
+	}
+	// Maven remote repo info
+	if strings.HasPrefix(filename, "_") {
+		return false
+	}
 	return strings.HasSuffix(filename, ".jar") ||
 		strings.HasSuffix(filename, ".pom")
 }
