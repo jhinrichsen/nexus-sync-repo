@@ -155,6 +155,9 @@ func consider(filename string) bool {
 	if strings.HasPrefix(filename, "_") {
 		return false
 	}
+	if filename == "archetype-catalog.xml" {
+		return false
+	}
 	return strings.HasSuffix(filename, ".jar") ||
 		strings.HasSuffix(filename, ".pom")
 }
