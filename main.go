@@ -71,12 +71,15 @@ func main() {
 				return nil
 			}
 
-			if strings.HasPrefix(folder, ".") {
-				log.Printf("Skipping %s\n", folder)
+			// filename is the complete thing below folder
+			// log.Printf("checking %s\n", filename)
+			// Ignore hidden items such as Nexus cache, trash, ...
+			if filepath.HasPrefix(fi.Name(), ".") {
+				log.Printf("Skipping %s\n", filename)
 				return filepath.SkipDir
 			}
 
-			if fi.Mode().IsRegular() && consider(filename) {
+			if fi.Mode().IsRegular() && consider(fi.Name()) {
 				path := folder
 				a, err := filepath.Rel(path, filename)
 				if err != nil {
@@ -153,17 +156,6 @@ func main() {
 }
 
 func consider(filename string) bool {
-	// Ignore hidden items such as Nexus cache, trash, ...
-	if strings.HasPrefix(filename, ".") {
-		return false
-	}
-	// Maven remote repo info
-	if strings.HasPrefix(filename, "_") {
-		return false
-	}
-	if filename == "archetype-catalog.xml" {
-		return false
-	}
 	return strings.HasSuffix(filename, ".jar") ||
 		strings.HasSuffix(filename, ".pom")
 }
