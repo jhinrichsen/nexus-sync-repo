@@ -70,6 +70,12 @@ func main() {
 				// continue
 				return nil
 			}
+
+			if strings.HasPrefix(folder, ".") {
+				log.Printf("Skipping %s\n", folder)
+				return filepath.SkipDir
+			}
+
 			if fi.Mode().IsRegular() && consider(filename) {
 				path := folder
 				a, err := filepath.Rel(path, filename)
